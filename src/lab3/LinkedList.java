@@ -65,7 +65,13 @@ public class LinkedList {
 	}
 	
 	public void printLinkedListTail() {
-
+		if (end != null) {
+			current = end;
+			while (current != null) {
+				System.out.println(current.getData());
+				current = current.getPrevious();
+			}
+		}
 	}
 	
 	public void printLinkedListHead() {
