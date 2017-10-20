@@ -1,8 +1,11 @@
+package lab3;
+
 public class ListElement {
-	private ListElement next;
-	private ListElement previous;
-	private int data;
+	private ListElement next;		//next node
+	private ListElement previous;	//previous node
+	private int data;				//node data
 	
+	//constructor
 	public ListElement() {
 		this.data = 0;
 		this.next = null;
@@ -16,19 +19,33 @@ public class ListElement {
 	 * 	None
 	 **/
 	
+	//setter for data
 	public void setData(int data) {
 		this.data = data;
 	}
 	
+	//getter for data
 	public int getData() {
 		return this.data;
 	}
 	
+	//setter for next
 	public void setNext(ListElement le) {
 		this.next = le;
 	}
 	
+	//getter for next
 	public ListElement getNext() {
 		return this.next;
+	}
+	
+	//setter for previous
+	public void setPrevious(ListElement le) {
+		this.previous = le;
+	}
+	
+	//getter for previous
+	public ListElement getPrevious () {
+		return this.previous;
 	}
 }
