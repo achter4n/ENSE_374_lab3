@@ -23,4 +23,8 @@ public class ListElement {
 	public int getData() {
 		return this.data;
 	}
+	
+	public void setNext(ListElement le) {
+		this.next = le;
+	}
 }

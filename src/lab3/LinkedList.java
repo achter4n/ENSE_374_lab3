@@ -12,7 +12,13 @@ public class LinkedList {
 	}
 	
 	public void addElement(ListElement le) {
-
+		if(front == null) {
+			front  = le;
+			current = front;
+			return;
+		}
+		le.setNext(current);	
+		current = le;
 	}
 	
 	public ListElement getElement(int index) {
