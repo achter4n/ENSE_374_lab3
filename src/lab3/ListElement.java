@@ -1,3 +1,5 @@
+package lab3;
+
 public class ListElement {
 	private ListElement next;
 	private ListElement previous;
@@ -30,5 +32,13 @@ public class ListElement {
 	
 	public ListElement getNext() {
 		return this.next;
+	}
+	
+	public void setPrevious(ListElement le) {
+		this.previous = le;
+	}
+	
+	public ListElement getPrevious () {
+		return this.previous;
 	}
 }

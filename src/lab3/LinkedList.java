@@ -1,3 +1,5 @@
+package lab3;
+
 public class LinkedList {
 	private ListElement front;
 	private ListElement current;
@@ -13,11 +15,11 @@ public class LinkedList {
 	
 	public void addElement(ListElement le) {
 		if(front == null) {
-			front  = le;
-			current = front;
+			front = end = le;
 			return;
 		}
-		le.setNext(end);	
+		end.setNext(le);
+		le.setPrevious(end);
 		end = le;
 		numElements++;
 	}
@@ -25,9 +27,8 @@ public class LinkedList {
 	public ListElement getElement(int index) {
 		if (index < 0)
 			return null;
-		current = null;
 		if (front != null) {
-			current = front.getNext();
+			current = front;
 			for(int i = 0; i < index; i++) {
 				if(current.getNext() == null)
 					return null;
@@ -38,12 +39,27 @@ public class LinkedList {
 	}
 	
 	public ListElement deleteElement(int index) {
+		ListElement temp1 = new ListElement();
+		ListElement temp2 = new ListElement();
 		current = getElement(index);
 		if (current == null) {
 			System.out.println("Element does not exist.");
 			return null;
 		}
-		current.setNext(current.getNext().getNext());
+		if (current == front) {
+			front = current.getNext();
+			front.setPrevious(null);
+		}
+		else if (current == end) {
+			end = current.getPrevious();
+			end.setNext(null);
+		}
+		else {
+			temp1 = current.getPrevious();
+			temp2 = current.getNext();
+			temp1.setNext(temp2);
+			temp2.setPrevious(temp1);
+		}
 		numElements--;
 		return current;
 	}
@@ -53,10 +69,12 @@ public class LinkedList {
 	}
 	
 	public void printLinkedListHead() {
-		current = null;
-		while(current.getNext() != null) {
-			System.out.println(current.getData() +" ");
-			current = current.getNext();
+		if (front != null) {
+			current = front;
+			while (current != null) {
+				System.out.println(current.getData());
+				current = current.getNext();
+			}
 		}
 	}
 }
