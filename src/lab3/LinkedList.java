@@ -17,8 +17,9 @@ public class LinkedList {
 			current = front;
 			return;
 		}
-		le.setNext(current);	
-		current = le;
+		le.setNext(end);	
+		end = le;
+		numElements++;
 	}
 	
 	public ListElement getElement(int index) {
@@ -28,10 +29,8 @@ public class LinkedList {
 		if (front != null) {
 			current = front.getNext();
 			for(int i = 0; i < index; i++) {
-				if(current.getNext() == null) {
-					System.out.println("Element does not exist.");
+				if(current.getNext() == null)
 					return null;
-				}
 				current = current.getNext();
 			}
 		}
@@ -39,7 +38,14 @@ public class LinkedList {
 	}
 	
 	public ListElement deleteElement(int index) {
-		
+		current = getElement(index);
+		if (current == null) {
+			System.out.println("Element does not exist.");
+			return null;
+		}
+		current.setNext(current.getNext().getNext());
+		numElements--;
+		return current;
 	}
 	
 	public void printLinkedListTail() {
