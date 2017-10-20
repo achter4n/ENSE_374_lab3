@@ -22,7 +22,21 @@ public class LinkedList {
 	}
 	
 	public ListElement getElement(int index) {
-		
+		// index must be 1 or higher
+		if (index < 0)
+			return null;
+		current = null;
+		if (front != null) {
+			current = front.getNext();
+			for(int i = 0; i < index; i++) {
+				if(current.getNext(); == null) {
+					System.out.println("Element does not exist.");
+					return null;
+				}
+				current = current.getNext();
+			}
+		}
+		return current;
 	}
 	
 	public ListElement deleteElement(int index) {
