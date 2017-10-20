@@ -49,10 +49,14 @@ public class LinkedList {
 	}
 	
 	public void printLinkedListTail() {
-		
+
 	}
 	
 	public void printLinkedListHead() {
-		
+		current = null;
+		while(current.getNext() != null) {
+			System.out.println(current.getData() +" ");
+			current = current.getNext();
+		}
 	}
 }
